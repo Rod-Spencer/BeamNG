@@ -1,0 +1,10 @@
+﻿<div class="config-card-img" style="background: @Background">
+    @if ((imageID != null) && (imageID != Guid.Empty))
+    {
+        <RenderComponent><img class="config-img" src="@GetImage()" /></RenderComponent>
+    }
+    else
+    {
+        <RenderComponent><img class="config-img" src="Empty.jpg" /></RenderComponent>
+    }
+</div>

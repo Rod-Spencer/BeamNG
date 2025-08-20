@@ -1,0 +1,89 @@
+﻿@page "/EditVehicle"
+@page "/EditVehicle/{ID:int}"
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using SpenSoft.DanBeamNG.Components
+
+@if (Saved == true)
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+<section>
+    @if (Vehicle != null)
+    {
+        <h1 class="page-title text-center">Editing Vehicle: @Vehicle?.Name</h1>
+        <br />
+        <br />
+
+        <EditForm Model="@Vehicle" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+            @if (Vehicle != null)
+            {
+                <div class="wide400 horiz-center">
+                    <VehicleNameEdit vehicle="@Vehicle" />
+                </div>
+                <section style="text-align:center">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="@RemoveImage"><i class="fa-solid fa fa-eraser" /> Remove Image</button>
+                </section>
+
+            }
+
+            <br />
+            <br />
+
+            <div class="flex-container">
+                <div>
+                    @if (Vehicle != null)
+                    {
+                        <a href="@($"AddConfiguration/{Vehicle.ID}")" class="btn btn-success btn-sm me-2"><i class="fa-solid fa-plus" /> Add a Configuration</a>
+                    }
+                    <a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+                </div>
+                <div>Configuration Count: @Configurations?.Count</div>
+            </div>
+
+            <br />
+        </EditForm>
+        @* 
+        <div class="form-group row wide150  mt-2">
+            <label class="wide50 ">Filter</label>
+            <div class="col-sm-1">
+                <InputText id="inputFilter" class="wide150 high-30 form-control col-sm-2" ValueChanged="@ApplyConfigurationFilter" ValueExpression="() => Filter" />
+            </div>
+        </div>
+ *@
+        <hr />
+
+        @if ((Vehicle != null) && (Vehicle?.Configurations?.Count > 0))
+        {
+            <h3 class="page-title text-center">Vehicle Configurations</h3>
+            <br />
+
+            <div class="row">
+                @foreach (var c in Configurations)
+                {
+                    @* <Virtualize Items="Configurations" Context="c"> *@
+                        <div class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-4 mb-2">
+                            <RenderComponent>
+                                <ConfigurationCard config="@c" ImageLookup_Clicked="ShowImagePopup" AllowEdit=true
+                                                   body="@BodyStyleName(c.BodyStyleID)" cls="@ClassificationsName(c.ClassificationID)"
+                                                   country="@CountriesName(c.CountryID)" drive="@DriveTrainName(c.DriveTrainID)"
+                                                   VehicleImageAssigned="AssignVehicleImage" DeleteConfigHandler="@DeleteConfiguration" />
+                            </RenderComponent>
+                        </div>
+                    @* </Virtualize> *@
+                }
+            </div>
+
+        }
+
+        @if ((ShowPopup == true) && (Unassigned_List != null))
+        {
+            <ImageLookupPopup vConfiguration="_selectedConfiguration" imageSelected="@ConfigurationImageAssigned"
+                              images="Unassigned_List?.OrderByDescending(x=>x.ImageEntered).ToList()" />
+        }
+
+    }
+</section>
+<br />

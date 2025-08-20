@@ -1,0 +1,175 @@
+﻿@page "/AddConfiguration/{ID}"
+@using SpenSoft.DanBeamNG.Components
+
+
+@if (Saved == false)
+{
+    <style>
+        div.mb5 {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <section>
+        @if (Vehicle != null)
+        {
+            <h1 class="page-title text-center">Vehicle: @Vehicle.Name (@Vehicle.ID)</h1>
+        }
+
+        <br />
+
+        <div class="form-group row mb-2">
+            <label class="col-sm-3 col-form-label">Vehicle ID</label>
+            <div class="col-sm-8">
+                @if (Vehicle != null)
+                {
+                    <label type="text" class="form-control-plaintext">@Vehicle.ID</label>
+                }
+            </div>
+        </div>
+
+
+        <EditForm Model="@Configuration" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+            <DataAnnotationsValidator />
+            <ValidationSummary></ValidationSummary>
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputText class="form-control col-sm-8" @bind-Value="@Configuration.Name" placeholder="Enter Configuration Name"></InputText>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Configuration.Name)" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Classification</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputSelect id="config-classification" class="form-control" @bind-Value="@Configuration.ClassificationID">
+                            @if (Classifications_List != null)
+                            {
+                                foreach (var c in Classifications_List)
+                                {
+                                    <option value="@c.ID">@c.Name</option>
+                                }
+                            }
+                        </InputSelect>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Configuration.ClassificationID)" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Body Style</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputSelect id="config-bodystyle" class="form-control" @bind-Value="@Configuration.BodyStyleID">
+                            @if (BodyStyles_List != null)
+                            {
+                                foreach (var c in BodyStyles_List)
+                                {
+                                    <option value="@c.ID">@c.Name</option>
+                                }
+                            }
+                        </InputSelect>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Configuration.BodyStyleID)" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Country</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputSelect id="config-country" class="form-control" @bind-Value="@Configuration.CountryID">
+                            @if (Countries_List != null)
+                            {
+                                foreach (var c in Countries_List)
+                                {
+                                    <option value="@c.ID">@c.Name</option>
+                                }
+                            }
+                        </InputSelect>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Configuration.CountryID)" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Drive Train</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputSelect id="config-drivetrain" class="form-control" @bind-Value="@Configuration.DriveTrainID">
+                            @if (DriveTrains_List != null)
+                            {
+                                foreach (var c in DriveTrains_List)
+                                {
+                                    <option value="@c.ID">@c.Name</option>
+                                }
+                            }
+                        </InputSelect>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Configuration.DriveTrainID)" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Image Name</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputText class="form-control col-sm-8" Value="@ImageName" ValueChanged="NameChanged" ValueExpression="() => ImageName" placeholder="Enter Image Name"></InputText>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Image</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <InputFile class="form-control col-sm-8" disabled="@isDisabled" OnChange="@LoadImage" placeholder="Select Image"></InputFile>
+                    }
+                </div>
+            </div>
+
+            @if (vehicleImage != null)
+            {
+                <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <ImageVehicle image="@vehicleImage.ImageName" />
+                        @* <img src="data:image/bmp;base64, @(Convert.ToBase64String(vehicleImage.ImageData))" height="250" /> *@
+                    </div>
+                </div>
+            }
+
+            <div>
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+            </div>
+
+
+        </EditForm>
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+<hr />
+
+@if (Configuration != null)
+{
+    <a href="@($"EditVehicle/{Configuration.VehicleID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to Vechicle</a>
+}
+<a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to Vehicle List</a>
+<a href="/" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-home"></i> Home</a>
+

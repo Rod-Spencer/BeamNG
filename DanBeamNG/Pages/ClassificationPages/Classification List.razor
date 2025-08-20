@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Components.Web.Virtualization
+@page "/ListClass"
+
+<h1 class="page-title text-center">List All Classifications</h1>
+<br />
+
+@if ((classificationList == null) && (Error == false))
+{
+    <p><em>Loading...</em></p>
+}
+else if ((classificationList == null) && (Error == true))
+{
+    <div class="alert @StatusClass">
+        @Message1
+        <br />
+        @Message2
+    </div>
+}
+else
+{
+    <a href="@($"AddClass")" class="btn btn-success btn-sm"><i class="fa-solid fa-plus" /> Add Classification</a>
+    <br />
+    <br />
+    <div class="tableFixHead">
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <Virtualize Items="classificationList" ItemSize="itemHeight" Context="v">
+                    <ItemContent>
+                        <tr @key="v.ID">
+                            <th></th>
+                            <th>@v.ID</th>
+                            <th>@v.Name</th>
+                            <th>
+                                <a href="@($"ViewClass/{v.ID}")" class="btn btn-primary btn-sm" title="Inspect this Classification">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </a>
+                                <a href="@($"EditClass/{v.ID}")" class="btn btn-primary btn-sm" title="Edit this Classification">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </a>
+                                <a href="@($"DeleteClass/{v.ID}")" class="btn btn-danger btn-sm" title="Delete this Classification">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </ItemContent>
+                </Virtualize>
+            </tbody>
+        </table>
+    </div>
+}
+<br />

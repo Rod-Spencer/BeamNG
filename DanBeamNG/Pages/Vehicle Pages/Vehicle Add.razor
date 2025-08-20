@@ -1,0 +1,52 @@
+﻿@page "/AddVehicle"
+
+@if (Saved == false)
+{
+    <section>
+        <h1 class="page-title">Adding a new Vehicle</h1>
+
+        @if (Vehicle != null)
+        {
+            <EditForm Model="@Vehicle" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+                <DataAnnotationsValidator />
+                <ValidationSummary></ValidationSummary>
+                <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label">Vehicle ID</label>
+                    <div class="col-sm-8">
+                        @if (Vehicle != null)
+                        {
+                            <label type="text" class="form-control-plaintext">@Vehicle.ID</label>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label">Vehicle Name</label>
+                    <div class="col-sm-8">
+                        @if (Vehicle != null)
+                        {
+                            <InputText class="form-control col-sm-8" @bind-Value="@Vehicle.Name" placeholder="Enter Vehicle Name"></InputText>
+                            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Vehicle.Name)" />
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+                </div>
+
+            </EditForm>
+        }
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+
+<hr />
+
+<a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>

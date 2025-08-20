@@ -1,0 +1,26 @@
+﻿@page "/ViewCountry/{ID}"
+
+<section>
+    <h1 class="page-title  text-center">View a Country</h1>
+    <br />
+    <br />
+
+    @if (country != null)
+    {
+            <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-8">
+                @country.Name
+                </div>
+            </div>
+        <br />
+
+    }
+</section>
+
+<hr />
+
+<a href="@($"EditCountry/{ID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Edit </a>
+<a href="@("ListCountries")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

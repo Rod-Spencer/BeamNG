@@ -1,0 +1,21 @@
+﻿<div class="col">
+    <div class="card rounded-3 vehicle-card">
+        <div class="card-header py-3 vehicle-card-title">
+            <h4 class="text-center">@vehicle?.Name</h4>
+        </div>
+        <RenderComponent><ImageConfig imageID="@vehicle?.ImageID" Background="@background" /></RenderComponent>
+        <div class="vehicle-card-footer">
+            <center>
+                <a href="@($"ViewVehicle/{vehicle?.ID}")" class="btn btn-primary btn-sm" title="Inspect this vehicle">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+                <a href="@($"EditVehicle/{vehicle?.ID}")" class="btn btn-primary btn-sm" title="Edit this vehicle">
+                    <i class="fa-solid fa-pencil"></i>
+                </a>
+                <button class="btn btn-danger btn-sm" title="Delete this vehicle" onclick="@DeleteClick">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </center>
+        </div>
+    </div>
+</div>

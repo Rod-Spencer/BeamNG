@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>SpenSoft.DanBeamNG</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Pages\Configuration Pages\**" />
+	  <Compile Remove="Pages\Image Pages\**" />
+	  <Compile Remove="Pages\Vehicle Pages\**" />
+	  <Content Remove="Pages\Configuration Pages\**" />
+	  <Content Remove="Pages\Image Pages\**" />
+	  <Content Remove="Pages\Vehicle Pages\**" />
+	  <EmbeddedResource Remove="Pages\Configuration Pages\**" />
+	  <EmbeddedResource Remove="Pages\Image Pages\**" />
+	  <EmbeddedResource Remove="Pages\Vehicle Pages\**" />
+	  <None Remove="Pages\Configuration Pages\**" />
+	  <None Remove="Pages\Image Pages\**" />
+	  <None Remove="Pages\Vehicle Pages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Services\ClientLogger Interface.cs" />
+	  <Compile Remove="Services\ClientLogger.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Components\AuthenticationStatus.razor" />
+	  <Content Remove="Pages\Authentication.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Shared\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="NLog" Version="6.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\EF\Entity-Framework-Libraries\BeamNG Context\BeamNG Context.csproj" />
+	  <ProjectReference Include="..\..\BeamNG Shared\BeamNG Shared.csproj" />
+	  <ProjectReference Include="..\..\Libraries\Helper\Exception Helper\Exception Helper.csproj" />
+	  <ProjectReference Include="..\..\Libraries\Helper\Logger Helper\Logger Helper.csproj" />
+	  <ProjectReference Include="..\..\Libraries\Objects\Vehicle Objects\Vehicle Objects.csproj" />
+	  <ProjectReference Include="..\..\Razor Classes\RazorClasses.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using SpenSoft.BeamNG.VehicleObjects
+
+@if (_vConfiguration != null)
+{
+    <div class="col center image-lookup-popup">
+        <h3 class="image-lookup-popup-header">Image Lookup</h3>
+
+        <section class="image-list image-lookup-popup-select horiz-center">
+            <Virtualize Items="@images" Context="c">
+                <ImageThumb imageID="@c.ImageID" imageName="@c.ImageName" config="@_vConfiguration" imageCallBack="@imageAssignCallBack" />
+            </Virtualize>
+        </section>
+
+        <section class="td-center">
+            <button type="button" class="btn btn-primary btn-sm mt-1 button-height" @onclick="@AlphaSort">A-Z</button>
+            <button type="button" class="btn btn-primary btn-sm mt-1 button-height" @onclick="@ReverseSort">Rcnt</button>
+            <button type="button" class="btn btn-primary btn-sm mt-1 button-height" @onclick="@Clear">Remove Image</button>
+            <button type="button" class="btn btn-primary btn-sm mt-1 button-height" @onclick="@Cancel">Cancel</button>
+        </section>
+
+        <div class="form-group row wide150 hcenter mt-2">
+            <label class="wide75 high-25">Filter</label>
+            <div class="col-sm-1 high-25">
+                <InputText id="inputFilter" class="wide100 high-25 form-control col-sm-2" Value="@Filter" ValueChanged="Filter_Changed" ValueExpression="() => Filter" />
+            </div>
+        </div>
+
+    </div>
+}

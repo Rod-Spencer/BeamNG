@@ -1,0 +1,111 @@
+﻿@page "/EditVehicle"
+@page "/EditVehicle/{ID}"
+
+@if (Saved == false)
+{
+    <section>
+        @if (Vehicle != null)
+        {
+            @if (Vehicle != null)
+            {
+                <h1 class="page-title text-center">Editing Vehicle: @Vehicle.Name</h1>
+            }
+
+            @if (Vehicle != null)
+            {
+                <EditForm Model="@Vehicle" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-4 col-form-label">Vehicle ID</label>
+                        <div class="col-sm-8">
+                            @if (Vehicle != null)
+                            {
+                                <label type="text" class="form-control-plaintext">@Vehicle.ID</label>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-4 col-form-label">Vehicle Name</label>
+                        <div class="col-sm-8">
+                            @if (Vehicle != null)
+                            {
+                                <InputText class="form-control col-sm-8" @bind-Value="@Vehicle.Name" placeholder="Enter Vehicle Name"></InputText>
+                            }
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+                    </div>
+
+                </EditForm>
+            }
+
+            @if ((Vehicle != null) && (Vehicle.Configurations.Count > 0))
+            {
+                <br />
+                <br />
+                <h3 class="page-title text-center">Vehicle Configurations</h3>
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Classification</th>
+                            <th>Body Type</th>
+                            <th>Country</th>
+                            <th>Drive Train</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Vehicle.Configurations)
+                        {
+                            <tr>
+                                <th></th>
+                                <th>@c.Name</th>
+                                <th>@ClassificationsName(c.ClassificationID)</th>
+                                <th>@BodyStyleName(c.BodyStyleID)</th>
+                                <th>@CountriesName(c.CountryID)</th>
+                                <th>@DriveTrainName(c.DriveTrainID)</th>
+                                <th>
+                                    <a href="@($"ViewConfiguration/{c.ID}")" class="btn btn-primary btn-sm" title="Inspect/View this Configuration">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                    <a href="@($"EditConfiguration/{c.ID}")" class="btn btn-primary btn-sm" title="Edit this Configuration">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                    <a href="@($"DeleteConfiguration/{c.ID}")" class="btn btn-danger btn-sm" title="Delete this Configuration">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+        else
+        {
+            <div class="alert @StatusClass">
+                @Message
+            </div>
+        }
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+<hr />
+
+@if (Vehicle != null)
+{
+    <a href="@($"AddConfiguration/{Vehicle.ID}")" class="btn btn-success btn-sm me-2"><i class="fa-solid fa-plus" /> Add a Configuration</a>
+}
+<a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>

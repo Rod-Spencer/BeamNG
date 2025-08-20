@@ -1,0 +1,15 @@
+﻿<div class="col">
+    <div>
+        <h2 class="text-center py-2 ">Random Vehicle Selection</h2>
+    </div>
+    <div class="card rounded-3 config-card">
+        @if (String.IsNullOrEmpty(vehicleName) == false)
+        {
+            <div class="card-header py-2 vehicle-card-title">
+                <h4 class="text-center">@vehicleName</h4>
+            </div>
+        }
+        <ConfigInfo body="@body" cls="@cls" country="@country" drive="@drive" name="@configName" />
+        <ImageSmall imageID="@vehicleImage?.ImageID" />
+    </div>
+</div>

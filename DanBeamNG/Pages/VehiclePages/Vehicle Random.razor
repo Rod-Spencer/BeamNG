@@ -1,0 +1,19 @@
+﻿@page "/RandomVehicle"
+@using SpenSoft.DanBeamNG.Components
+
+<div class="wide400">
+
+    <RandomCard vehicleName="@vehicleName" configName="@configurationName"
+                body="@bodyStyle"
+                cls="@classification"
+                country="@country"
+                drive="@driveTrain"
+                vehicleImage="@vehicleImage" />
+</div>
+
+<div class="vmargin-10 wide400">
+    <center>
+        <button type="button" class="btn btn-primary btn-sm mb-1" @onclick="@GetNext"><i class="fa-solid fa-arrow-circle-right" /> Next Random Configuration </button>
+    </center>
+</div>
+<br />

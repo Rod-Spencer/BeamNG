@@ -1,0 +1,14 @@
+﻿<div class="row wide100p  high-75">
+    <div class="wide40p">
+        <img class="image-thumb" src="@GetImage()" />
+        @* <img class="image-thumb" src="data:image/bmp;base64, @(Convert.ToBase64String(@image.ImageData))" /> *@
+    </div>
+    <div class="wide60p">
+        <div>
+            @imageName
+        </div>
+        <div>
+            <button type="button" class="btn btn-success btn-sm" @onclick="@Assign">Assign</button>
+        </div>
+    </div>
+</div>

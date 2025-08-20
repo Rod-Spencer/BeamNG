@@ -1,0 +1,33 @@
+﻿
+<div class="d-flex" style="width: 90%; margin-left: 0;margin-right: 0;margin-bottom: 0;margin-top: .5rem;">
+    <div class="text-left" style="width: @LabelWidth;">@Label</div>
+    <div class="text-left" style="width: @InputWidth;">
+        <InputSelect class="form-control mb-1" @bind-Value="@BindingProperty">
+            @if ((ValueList != null) && (ValueList.Count > 0))
+            {
+                foreach (var kv in @ValueList)
+                {
+                    <option value="@kv.Key">@kv.Value</option>
+                }
+            }
+        </InputSelect>
+    </div>
+</div>
+
+
+@* 
+<div class="form-group d-flex align-items-center wide100p no-buffer">
+    <div class="wide50p label-color no-buffer">@Label</div>
+    <div class="wide50p no-buffer">
+        <InputSelect class="form-control mb-1" @bind-Value="@BindingProperty">
+            @if ((ValueList != null) && (ValueList.Count > 0))
+            {
+                foreach (var kv in @ValueList)
+                {
+                    <option value="@kv.Key">@kv.Value</option>
+                }
+            }
+        </InputSelect>
+    </div>
+</div>
+ *@

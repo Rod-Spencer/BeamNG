@@ -1,0 +1,11 @@
+﻿<div class="rounded-3 config-card">
+    @if (String.IsNullOrEmpty(VehicleName) == false)
+    {
+        <div class="py-2 vehicle-card-title">
+            <h4 class="text-center">@VehicleName</h4>
+        </div>
+    }
+    <ConfigInfo body="@BodyStyleName" cls="@ClassificationName" country="@CountryName" drive="@DriveTrainName" name="@ConfigurationName" />
+    <ImageSmall imageID="@ImageID" />
+</div>
+

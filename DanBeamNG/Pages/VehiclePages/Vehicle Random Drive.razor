@@ -1,0 +1,61 @@
+﻿@page "/RandomVehicleDrive"
+@using SpenSoft.DanBeamNG.Components
+
+
+<div class="col high-600 wide400">
+    <div class="py-2">
+        <h2 class="text-center ">Random Vehicle Selection</h2>
+        <h4 class="text-center ">by Drive Train</h4>
+    </div>
+
+
+    <div class="random-card-select py-1">
+        <div class="row">
+            <div class="wide40p">Select Drive Train</div>
+            <div class="wide60p">
+                <InputSelect id="activity-driveSelect" class="wide100p"
+                             ValueChanged="@((Guid? x) => WhenValueChanges(x))"
+                             ValueExpression="@(() => SelectedDrive)"
+                             Value="@SelectedDrive">
+                    <option value="@Guid.Empty"></option>
+                    @if ((DriveTrain_List != null) && (DriveTrain_List.Count > 0))
+                    {
+                        foreach (var c in DriveTrain_List)
+                        {
+                            <option value="@c.ID">@c.Name</option>
+                        }
+                    }
+                </InputSelect>
+            </div>
+        </div>
+        <div>
+            @if (ConfigurationCount > 0)
+            {
+                <div class="sFont td-center">
+                    @($"Number of Configurations: {ConfigurationCount}")
+                </div>
+            }
+        </div>
+    </div>
+
+    @if ((SelectedDrive != null) && (SelectedDrive != Guid.Empty))
+    {
+        <div class="wide400">
+            <RenderComponent>
+                <RandomDriveCard VehicleName="@VehicleName" ConfigurationName="@ConfigurationName" BodyStyleName="@BodyStyleName"
+                                 ClassificationName="@ClassificationName" CountryName="@CountryName" DriveTrainName="@DriveTrainName"
+                                 ImageID="@ConfigurationImageID" />
+            </RenderComponent>
+        </div>
+
+        <div class="vmargin-10 wide400">
+            <center>
+                <button type="button" class="btn btn-primary btn-sm mb-1" @onclick="@GetNext">
+                    <i class="fa-solid fa-arrow-circle-right" />
+                    Next Random Configuration
+                </button>
+            </center>
+        </div>
+    }
+</div>
+<br />

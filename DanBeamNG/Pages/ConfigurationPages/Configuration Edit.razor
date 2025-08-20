@@ -1,0 +1,73 @@
+﻿@page "/EditConfiguration/{ID}"
+@* @page "/EditConfiguration/{ID}/{ImageID}" *@
+@using SpenSoft.DanBeamNG.Components
+
+
+@if (Saved == true)
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+
+@if ((Configuration != null) && (Vehicle != null))
+{
+    <style>
+        div.mb5 {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <section>
+        @if (Vehicle != null)
+        {
+            <h1 class="page-title text-center">Editing Vehicle: @Vehicle.Name</h1>
+        }
+        @if (Configuration != null)
+        {
+            <h3 class="page-title text-center">Configuration: @Configuration.Name</h3>
+        }
+
+        <EditForm Model="@Configuration" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+            <DataAnnotationsValidator />
+            <ValidationSummary></ValidationSummary>
+
+            <RenderComponent>
+                <ConfigurationEditCard config="@Configuration" BodyStyles_List="@BodyStyles_List" Classifications_List="@Classifications_List"
+                                       Countries_List="@Countries_List" DriveTrains_List="@DriveTrains_List" ImageName_Delegate="@ImageName_Changed"
+                                       loadCallback_Delegate="@Image_Selected" ImageID="@ImageID" ImageName="@ImageName" />
+            </RenderComponent>
+
+            <div class="horiz-center m-2">
+                <button type="submit" class="btn btn-primary btn-sm horiz-center"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+            </div>
+
+
+        </EditForm>
+    </section>
+
+    <center>
+        <div>
+            <a href="@($"EditVehicle/{Configuration?.VehicleID}")" class="btn btn-primary btn-sm"><i class="fa-solid fa-rotate-left" /> Return to Vechicle</a>
+            @* <a href="@($"EditConfiguration/{Configuration.ID}")" class="btn btn-primary btn-sm"><i class="fa-solid fa-rotate-left" /> Return to Configuration</a> *@
+            <a href="@("ListVehicle")" class="btn btn-primary btn-sm"><i class="fa-solid fa-rotate-left" /> Return to Vehicle List</a>
+            <a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+        </div>
+    </center>
+}
+else
+{
+    <hr />
+    <center>
+        <div>
+            <a href="@($"EditVehicle/{Configuration?.VehicleID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to Vechicle</a>
+            <a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to Vehicle List</a>
+            <a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+        </div>
+    </center>
+}
+<hr />
+
+
+<br />
+<br />

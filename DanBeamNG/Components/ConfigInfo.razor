@@ -1,0 +1,52 @@
+﻿@if (String.IsNullOrEmpty(name) == false)
+{
+    <div class="card-header py-1 config-card-title">
+        <h5 class="text-center">@name</h5>
+    </div>
+}
+<div class="card-body config-card-body">
+    <div class="row wide100p">
+        <div class="config-col1p">
+            Body Style
+        </div>
+        <div class="config-col2p">
+            @if (body != null)
+            {
+                @body
+            }
+        </div>
+    </div>
+    <div class="row wide100p">
+        <div class="config-col1p">
+            Classification
+        </div>
+        <div class="config-col2p">
+            @if (cls != null)
+            {
+                @cls
+            }
+        </div>
+    </div>
+    <div class="row wide100p">
+        <div class="config-col1p">
+            Country
+        </div>
+        <div class="config-col2p">
+            @if (country != null)
+            {
+                @country
+            }
+        </div>
+    </div>
+    <div class="row wide100p">
+        <div class="config-col1p">
+            Drive Train
+        </div>
+        <div class="config-col2p">
+            @if (drive != null)
+            {
+                @drive
+            }
+        </div>
+    </div>
+</div>

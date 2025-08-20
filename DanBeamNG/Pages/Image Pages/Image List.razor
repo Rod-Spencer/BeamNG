@@ -1,0 +1,43 @@
+﻿@page "/ListImages"
+
+<h1 class="page-title text-center">List All Images</h1>
+
+@if (ImageList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <a href="@($"AddImage")" class="btn btn-success btn-sm"><i class="fa-solid fa-plus" /> Add Image</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in ImageList)
+            {
+                <tr>
+                    <th></th>
+                    <th>@v.ImageID</th>
+                    <th>@v.ImageName</th>
+                    <th>
+                        <a href="@($"ViewImage/{v.ImageID}")" class="btn btn-primary btn-sm" title="Inspect this vehicle">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="@($"EditImage/{v.ImageID}")" class="btn btn-primary btn-sm" title="Edit this vehicle">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <a href="@($"DeleteImage/{v.ImageID}")" class="btn btn-danger btn-sm" title="Delete this vehicle">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

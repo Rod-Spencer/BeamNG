@@ -1,0 +1,56 @@
+﻿@page "/EditImage/{ImageID}"
+
+@if (Saved == true)
+{
+    <section>
+        <h1 class="page-title text-center">Edit a Vehicle Image</h1>
+        <br />
+        <br />
+
+        @if (vehicleImage != null)
+        {
+            <EditForm Model="@vehicleImage" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+                <DataAnnotationsValidator />
+                <ValidationSummary></ValidationSummary>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        @if (vehicleImage != null)
+                        {
+                            <InputText class="form-control col-sm-8" @bind-Value="@vehicleImage.ImageName" placeholder="Enter Image Name"></InputText>
+                            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => vehicleImage.ImageName)" />
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label">Image</label>
+                    <div class="col-sm-8">
+                        @if (imagesData != null)
+                        {
+                            <img src="data:image/bmp;base64, @(Convert.ToBase64String(imagesData.ImageData))" height="250" />
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+                </div>
+
+            </EditForm>
+        }
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+
+<hr />
+
+<a href="@("ListImages")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

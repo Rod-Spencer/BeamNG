@@ -1,0 +1,45 @@
+﻿@page "/ViewImage/{ImageID}"
+
+@if (Saved == true)
+{
+    <section>
+        <h1 class="page-title text-center">View a Vehicle Image</h1>
+        <br />
+        <br />
+
+        @if (vehicleImage != null)
+        {
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    @vehicleImage.ImageName
+                </div>
+            </div>
+
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Image</label>
+                <div class="col-sm-8">
+                    @if (imagesData != null)
+                    {
+                        <img src="data:image/bmp;base64, @(Convert.ToBase64String(imagesData.ImageData))" height="250" />
+                    }
+                </div>
+            </div>
+
+        }
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+
+<hr />
+
+<a href="@($"EditImage/{ImageID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pencil" /> Edit</a>
+<a href="@("ListImages")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

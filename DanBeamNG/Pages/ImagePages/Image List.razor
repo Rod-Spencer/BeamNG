@@ -1,0 +1,71 @@
+﻿@page "/ListImages"
+@page "/ListImages/{Reverse}"
+@page "/ListImages/{Reverse}/{Filter}"
+@page "/ListImages/Assigned/{Assigned}"
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using SpenSoft.DanBeamNG.Components
+
+<h1 class="page-title text-center">List All Images</h1>
+<br />
+
+@if ((ImageList == null) && (Error == false))
+{
+    <p><em>Loading...</em></p>
+}
+else if ((ImageList == null) && (Error == true))
+{
+    <div class="alert @StatusClass">
+        @Message1
+        <br />
+        @Message2
+    </div>
+}
+else
+{
+    <div class="flex-container">
+        <div>
+            <a href="@($"AddImage")" class="btn btn-success btn-sm"><i class="fa-solid fa-plus" /> Add Image(s)</a>
+            <a href="@($"ListImages/true/{Filter}")" class="btn btn-primary btn-sm"><i class="fa-solid fa-list" /> Reverse Chronological Order</a>
+            <a href="@($"ListImages/false/{Filter}")" class="btn btn-primary btn-sm"><i class="fa-solid fa-list" /> Alphabeical Order</a>
+            <a href="@($"ListImages/Assigned/false")" class="btn btn-primary btn-sm"><i class="fa-solid fa-list" /> Unassigned</a>
+            <button type="button" class="btn btn-primary btn-sm" onclick="@GenerateReport"><i class="fa-solid fa-print" /> Report</button>
+        </div>
+        @if (ImageList != null)
+        {
+            <div>Image Count: @ImageList.Count</div>
+        }
+    </div>
+
+    <EditForm Model="@searchData" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+        <div class="form-group row wide50p mt-2">
+            <div class="wide50 ">Filter</div>
+            <div class="wide400">
+                <InputText id="inputFilter" class="wide150 high-30" @bind-Value="searchData.Filter" />
+                @* <InputText id="inputFilter" class="wide100 high-30 form-control col-sm-2" @bind-Value="@Filter" ValueChanged="Filter_Changed" ValueExpression="() => Filter" /> *@
+
+                <button type="submit" class="btn btn-primary btn-sm m-1 wide100"> Submit </button>
+                <button type="button" class="btn btn-primary btn-sm m-1 wide100" onclick="@ClearSearchData"> Clear </button>
+            </div>
+            <div>
+            </div>
+        </div>
+
+    </EditForm>
+
+    <br />
+    <br />
+    <div class="row">
+        @if (ImageList != null)
+        {
+            foreach (var i in ImageList)
+            {
+                @* <Virtualize Items="ImageList" Context="c"> *@
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <ImageCard image="@i" Delete_Delegate="@Delete_Handler" />
+                    </div>
+                @* </Virtualize> *@
+            }
+        }
+    </div>
+}
+<br />

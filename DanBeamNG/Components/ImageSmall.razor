@@ -1,0 +1,12 @@
+﻿<div class="card-body text-center image-card-body">
+    <div class="mb-2">
+        @if ((imageID != null) && (imageID != Guid.Empty))
+        {
+            <img class="image-img" src="@GetImage()" />
+        }
+        else
+        {
+            <img class="image-img" src="Empty.jpg" />
+        }
+    </div>
+</div>

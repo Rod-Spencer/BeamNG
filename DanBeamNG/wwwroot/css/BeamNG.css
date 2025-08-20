@@ -1,0 +1,675 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.tableFixHead {
+    overflow: auto;
+    height: 650px;
+    overflow-y: scroll;
+    margin-bottom: 50px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: navy;
+    color: white;
+    height: 40px;
+}
+
+.vehicle-card {
+    margin: 10px;
+}
+
+.vehicle-edit {
+    margin: 10px;
+    background-color: lightblue;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.config-edit {
+    margin: 10px;
+    background-color: lightcyan;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 100px;
+    }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 120px;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 120px;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 150px;
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 175px;
+    }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 150px;
+    }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+    .vehicle-img {
+        border-radius: 10%;
+        width: 200px;
+    }
+}
+
+/* Large screens ----------- */
+/*@media only screen and (min-width : 1824px) {*/
+/* Styles */
+/*}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+}
+
+@media screen and (max-width: 540px) {
+    .vehicle-img {
+        border-radius: 10%;
+        height: 130px;
+    }
+}
+
+@media screen and (min-width: 541px) and (max-width: 780px) {
+    .vehicle-img {
+        border-radius: 10%;
+        height: 130px;
+    }
+}
+
+@media screen and (min-width: 781px) and (max-width: 780px) {
+    .vehicle-img {
+        border-radius: 10%;
+        height: 130px;
+    }
+}*/
+
+
+.vehicle-card-title {
+    background-color: aliceblue;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+}
+
+.vehicle-card-body {
+    background-color: lightskyblue;
+}
+
+.vehicle-card-footer {
+    background-color: lightskyblue;
+}
+
+.vehicle-card-img {
+    background-color: lightskyblue;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+}
+
+
+.image-lookup-popup-header {
+    text-align: center !important;
+    height: 30px;
+    margin-bottom: 1px;
+}
+
+.image-lookup-popup {
+    border-radius: 30px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    width: 400px;
+    height: 600px;
+    position: relative;
+    top: 50% !important;
+    bottom: 0px;
+    right: 0px;
+    left: 35%;
+    background-color: lightblue;
+}
+
+.image-list {
+    height: 500px;
+    overflow-y: scroll;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.image-lookup-popup-select {
+    width: 100% !important;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.image-card {
+    margin: 1rem;
+    width: 100%;
+}
+
+.image-thumb {
+    width: 100px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.image-img {
+    border-radius: 20px;
+    height: 175px;
+    width: auto;
+    max-width: 350px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.image-card-title {
+    background-color: lightyellow;
+    width: 100%;
+    height: 50px;
+}
+
+
+.image-card-body {
+    background-color: lightcyan;
+    width: 100%;
+    height: 200px;
+}
+
+.image-card-id {
+    background-color: lightcyan;
+    width: 100%;
+    height: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: smaller
+}
+
+.image-card-footer {
+    background-color: lightcyan;
+    width: 100%;
+    height: 38px;
+}
+
+
+
+.config-card {
+    margin: 0px;
+    width: 100%;
+}
+
+.config-img {
+    border-radius: 10%;
+    height: 100px;
+}
+
+.config-card-img-background-lightcyan {
+    background-color: lightcyan;
+}
+
+.config-card-img {
+    /*background-color: transparent;*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+}
+
+.config-card-title {
+    background-color: aliceblue;
+    width: 100%;
+}
+
+.config-card-body {
+    background-color: lightcyan;
+    width: 100%;
+    height: 100px;
+    font-size: smaller;
+}
+
+.config-card-footer {
+    background-color: lightcyan;
+    width: 100%;
+}
+
+
+.config-card-footer-justify-70p {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly
+}
+
+.config-card-footer-justify-50p {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly
+}
+
+
+.random-card-select {
+    width: 100%;
+    height: 50px;
+    font-size: medium;
+    border-color: black;
+    border-width: 1px;
+}
+
+
+
+.centerIcons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.td-center {
+    text-align: center;
+}
+
+.image-w400 {
+    width: 400px;
+}
+
+.image-h250 {
+    height: 250px;
+}
+
+.thumb-h25 {
+    height: 25px;
+}
+
+.thumb-w40 {
+    width: 40px;
+}
+
+.config-col1 {
+    width: 150px;
+}
+
+.config-col1p {
+    width: 33.3%;
+}
+
+.config-col2 {
+    width: 250px;
+}
+
+.config-col2p {
+    width: 66.6%;
+}
+
+.config-bold {
+    font-weight: bolder;
+}
+
+
+.wide1500 {
+    width: 1500px;
+}
+
+.wide1400 {
+    width: 1400px;
+}
+
+.wide1300 {
+    width: 1300px;
+}
+
+.wide1200 {
+    width: 1200px;
+}
+
+.wide1100 {
+    width: 1100px;
+}
+
+.wide1000 {
+    width: 1000px;
+}
+
+.wide900 {
+    width: 900px;
+}
+
+.wide800 {
+    width: 800px;
+}
+
+.wide700 {
+    width: 700px;
+}
+
+.wide750 {
+    width: 750px;
+}
+
+.wide600 {
+    width: 600px;
+}
+
+.wide500 {
+    width: 500px;
+}
+
+.wide400 {
+    width: 400px;
+}
+
+.wide300 {
+    width: 300px;
+}
+
+.wide200 {
+    width: 200px;
+}
+
+.wide250 {
+    width: 250px;
+}
+
+.wide5icon {
+    width: 300px;
+}
+
+.wide175 {
+    width: 175px;
+}
+
+.wide150 {
+    width: 150px;
+}
+
+.wide100 {
+    width: 100px;
+}
+
+.wide75 {
+    width: 75px;
+}
+
+.wide50 {
+    width: 50px;
+}
+
+.wide30 {
+    width: 30px;
+}
+
+.wide4icon {
+    width: 250px;
+}
+
+
+
+.wide100p {
+    width: 100%;
+}
+
+.wide75p {
+    width: 75%;
+}
+
+.wide66p {
+    width: 66.6%;
+}
+
+.wide60p {
+    width: 60%;
+}
+
+.wide50p {
+    width: 50%;
+}
+
+.wide40p {
+    width: 40%;
+}
+
+.wide33p {
+    width: 33.3%;
+}
+
+.wide25p {
+    width: 25%;
+}
+
+
+
+
+
+
+.high-600 {
+    height: 600px;
+}
+
+.high-500 {
+    height: 500px;
+}
+
+.high-400 {
+    height: 400px;
+}
+
+.high-300 {
+    height: 300px;
+}
+
+.high-200 {
+    height: 200px;
+}
+
+.high-100 {
+    height: 100px;
+}
+
+.high-75 {
+    height: 75px;
+}
+
+.high-50 {
+    height: 50px;
+}
+
+.high-30 {
+    height: 30px;
+}
+
+.high-25 {
+    height: 25px;
+}
+
+.high-75p {
+    height: 75%;
+}
+
+.high-50p {
+    height: 50%;
+}
+
+.high-30p {
+    height: 30%;
+}
+
+.high-25p {
+    height: 25%;
+}
+
+.high-20p {
+    height: 20%;
+}
+
+
+
+
+.checkbox-w25 {
+    width: 30px;
+}
+
+.checkbox-h25 {
+    height: 30px;
+}
+
+.checkbox-w20 {
+    width: 20px;
+}
+
+.checkbox-h20 {
+    height: 20px;
+}
+
+.text-h150 {
+    height: 250px;
+}
+
+.cbNotActive {
+    pointer-events: none;
+    color: #CCC000;
+}
+
+.td-center {
+    text-align: center;
+}
+
+.bFont {
+    font-family: arial;
+    font-size: 14px;
+}
+
+.sFont {
+    font-family: 'Times New Roman';
+    font-size: small;
+}
+
+.BeamNG-container {
+    width: 100%;
+}
+
+.BeamNG-image {
+    height: auto;
+    width: 95%;
+}
+
+
+.center {
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.vcenter {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+}
+
+.horiz-center {
+    display: block;
+    margin: auto;
+}
+
+.hcenter {
+    width: 50%;
+    margin: 0 auto;
+    /*    position: relative;
+    left: 50%;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+*/
+}
+
+.hmargin-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.hmargin-20 {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.vmargin-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.vmargin-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-height {
+    height: 28px !important;
+    line-height: 1.25 !important;
+}
+
+
+.loginAccountInfo {
+    height: 30px;
+    color: aqua;
+}

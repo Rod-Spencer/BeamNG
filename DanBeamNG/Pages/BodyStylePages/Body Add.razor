@@ -1,0 +1,47 @@
+﻿@page "/AddBody"
+
+@if (Saved == true)
+{
+    <section>
+        <h1 class="page-title  text-center">Adding a Body Style</h1>
+        <br />
+        <br />
+
+        @if (bodyStyle != null)
+        {
+            <EditForm Model="@bodyStyle" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+                <DataAnnotationsValidator />
+                <ValidationSummary></ValidationSummary>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        @if (bodyStyle != null)
+                        {
+                            <InputText class="form-control col-sm-8" @bind-Value="@bodyStyle.Name" placeholder="Enter Body Style"></InputText>
+                            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => bodyStyle.Name)" />
+                        }
+                    </div>
+                </div>
+
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+                </div>
+
+            </EditForm>
+        }
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+
+<hr />
+
+<a href="@("ListBody")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

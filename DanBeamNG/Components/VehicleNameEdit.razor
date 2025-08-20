@@ -1,0 +1,43 @@
+﻿<div class="col">
+    <div class="card rounded-3 vehicle-edit wide400 mt-2">
+        <Display_Text Label="Vehicle ID" Data="@vehicle?.ID.ToString()" />
+        @if (viewOnly == true)
+        {
+            <Display_Text Label="Vehicle Name" Data="@vehicle?.Name" />
+        }
+        else
+        {
+            <Input_Text Label="Vehicle Name" Data="@vehicle?.Name"  />
+        }
+        @* 
+        <span class="form-group row mb-2 mt-1 wide100p">
+            <div class="wide40p ml-1">Vehicle ID</div>
+            <div class="wide60p">@vehicle?.ID</div>
+        </span>
+
+        <span class="form-group row mb-2 wide100p">
+            <div class="wide40p ml-1">Vehicle Name</div>
+            <div class="wide60p">
+                @if (vehicle != null)
+                {
+                    @if (viewOnly == true)
+                    {
+                        @vehicle.Name
+                    }
+                    else
+                    {
+                        <InputText class="form-control" @bind-Value="@vehicle.Name" placeholder="Enter Vehicle Name"></InputText>
+                    }
+                }
+            </div>
+        </span>
+ *@
+
+        @if (showImage == true)
+        {
+            <div class="form-group row mb-2">
+                <RenderComponent><ImageConfig imageID="@vehicle?.ImageID" /></RenderComponent>
+            </div>
+        }
+    </div>
+</div>

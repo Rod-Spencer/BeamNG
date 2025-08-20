@@ -1,0 +1,56 @@
+﻿@page "/ViewVehicle/{ID}"
+@using SpenSoft.DanBeamNG.Components
+
+@if (vehicle != null)
+{
+    <h1 class="page-title text-center">Viewing Vehicle: @vehicle.Name</h1>
+    <div class="text-center">Vehicle View</div>
+
+    <br />
+    <center>
+        <RenderComponent><VehicleNameEdit vehicle="@vehicle" viewOnly=true /></RenderComponent>
+    </center>
+    <br />
+
+    <div class="flex-container">
+        <div>
+            @if (vehicle != null)
+            {
+                <a href="@($"EditVehicle/{vehicle.ID}")" class="btn btn-primary btn-sm me-2 mx-2"><i class="fa-solid fa-pencil" /> Edit</a>
+            }
+            <a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2 mx-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+            </div>
+        <div>Configuration Count: @vehicle?.Configurations?.Count</div>
+    </div>
+
+    <hr />
+
+    @if ((vehicle != null) && (vehicle?.Configurations?.Count > 0))
+    {
+        <h3 class="page-title text-center">Vehicle Configurations</h3>
+        <br />
+
+        <div class="row">
+
+            @foreach (var c in vehicle.Configurations)
+            {
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-2">
+                    <RenderComponent>
+                        <ConfigurationCard config="@c" AllowEdit=false
+                                           body="@BodyStyleName(c.BodyStyleID)" cls="@ClassificationsName(c.ClassificationID)"
+                                           country="@CountriesName(c.CountryID)" drive="@DriveTrainName(c.DriveTrainID)" />
+                    </RenderComponent>
+                </div>
+            }
+        </div>
+
+    }
+}
+else
+{
+    <h1 class="page-title text-center">Object: Vehicle is null</h1>
+
+    <hr />
+}
+
+<br />

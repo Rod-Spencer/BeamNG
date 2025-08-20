@@ -1,0 +1,41 @@
+﻿@page "/ListVehicle"
+
+<h1 class="page-title text-center">All Vehicles</h1>
+
+@if (VehicleList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <a href="@($"AddVehicle")" class="btn btn-success btn-sm"><i class="fa-solid fa-plus" /> Add Vehicle</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in VehicleList)
+            {
+                <tr>
+                    <th></th>
+                    <th>@v.Name</th>
+                    <th>
+                        <a href="@($"VehicleDetail/{v.ID}")" class="btn btn-primary btn-sm" title="Inspect this vehicle">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="@($"EditVehicle/{v.ID}")" class="btn btn-primary btn-sm" title="Edit this vehicle">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <a href="@($"DeleteVehicle/{v.ID}")" class="btn btn-danger btn-sm" title="Delete this vehicle">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

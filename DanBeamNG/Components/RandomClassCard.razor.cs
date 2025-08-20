@@ -1,0 +1,129 @@
+﻿using Microsoft.AspNetCore.Components;
+
+namespace SpenSoft.DanBeamNG.Components
+{
+    public partial class RandomClassCard : ComponentBase
+    {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Constructors
+        #endregion
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Parameters
+
+        [Parameter]
+        public String? VehicleName { get; set; }
+
+        [Parameter]
+        public String? ConfigurationName { get; set; }
+
+        [Parameter]
+        public Guid? ImageID { get; set; }
+
+        [Parameter]
+        public String? BodyStyleName { get; set; }
+
+        [Parameter]
+        public String? ClassificationName { get; set; }
+
+        [Parameter]
+        public String? CountryName { get; set; }
+
+        [Parameter]
+        public String? DriveTrainName { get; set; }
+
+        #endregion Parameters
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Injections
+
+        //[Inject]
+        //public ConfigurationDataService_Interface? ConfigurationDataService { get; set; }
+
+        //[Inject]
+        //public VehicleDataService_Interface? VehicleDataService { get; set; }
+
+        //[Inject]
+        //public VehicleImageDataService_Interface? imageDataService { get; set; }
+
+        //[Inject]
+        //public ClassificationsDataService_Interface? classificationsDataService { get; set; }
+
+        //[Inject]
+        //public BodyStyleDataService_Interface? bodyStyleDataService { get; set; }
+
+        //[Inject]
+        //public CountriesDataService_Interface? countriesDataService { get; set; }
+
+        //[Inject]
+        //public DriveTrainDataService_Interface? driveTrainDataService { get; set; }
+
+
+        #endregion Injections
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Public Properties
+
+        //public String? SelectedClass { get; set; }
+
+        //public VConfiguration? configuration { get; set; } = null;
+
+        //public vehicle? vehicle { get; set; } = null;
+
+        //public String? vehicleName { get; set; } = null;
+
+        //public String? configName { get; set; } = null;
+
+        //public String? body { get; set; } = null;
+
+        //public String? cls { get; set; } = null;
+
+        //public String? country { get; set; } = null;
+
+        //public String? drive { get; set; } = null;
+
+        //public VehicleImage? vehicleImage { get; set; } = null;
+
+        //public int ConfigurationCount { get; set; } = 0;
+
+        #endregion Public Properties
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Screen State Properties
+        #endregion Screen State Properties
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Override Methods
+        #endregion Override Methods
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Protected Methods
+        #endregion
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Public Methods
+        #endregion
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Private Methods
+        #endregion
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    }
+}

@@ -1,0 +1,47 @@
+﻿@page "/AddDriveTrain"
+
+@if (Saved == true)
+{
+    <section>
+        <h1 class="page-title  text-center">Adding a Drive Train</h1>
+        <br />
+        <br />
+
+        @if (driveTrain != null)
+        {
+            <EditForm Model="@driveTrain" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+                <DataAnnotationsValidator />
+                <ValidationSummary></ValidationSummary>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        @if (driveTrain != null)
+                        {
+                            <InputText class="form-control col-sm-8" @bind-Value="@driveTrain.Name" placeholder="Enter Drive Train"></InputText>
+                            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => driveTrain.Name)" />
+                        }
+                    </div>
+                </div>
+
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+                </div>
+
+            </EditForm>
+        }
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+    </div>
+}
+
+<hr />
+
+<a href="@("ListDriveTrain")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

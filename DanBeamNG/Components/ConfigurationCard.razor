@@ -1,0 +1,41 @@
+﻿<div class="col">
+    <div class="card rounded-3 config-card">
+        <RenderComponent><ConfigInfo body="@body" cls="@cls" country="@country" drive="@drive" name="@config?.Name" /></RenderComponent>
+        <div></div>
+        <RenderComponent><ImageConfig imageID="@config?.ImageID" Background="lightcyan" /></RenderComponent>
+
+
+        @if (AllowEdit == true)
+        {
+            <div class="config-card-footer pb-1">
+                <center>
+                    @if ((config?.ImageID != null) && (config?.ImageID != Guid.Empty))
+                    {
+                        <div class="config-card-footer-justify-70p">
+                            <a href="@($"EditConfiguration/{config?.ID}")" class="btn btn-primary btn-sm" title="Edit this Configuration">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <button class="btn btn-danger btn-sm" title="Delete this Configuration" onclick="@DeleteConfigClick">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                            <button class="ml-2 btn btn-info btn-sm" @onclick="AssignImageToVehicle"> Assign <i class="fa-solid fa-car-side" /></button>
+                            <button class="btn btn-primary btn-sm ml-2" @onclick="@AssignImageToConfiguration"><i class="fa-solid fa-car-side" /> Assign Image </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="config-card-footer-justify-50p">
+                            <a href="@($"EditConfiguration/{config?.ID}")" class="btn btn-primary btn-sm" title="Edit this Configuration">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <button class="btn btn-danger btn-sm" title="Delete this Configuration" onclick="@DeleteConfigClick">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                            <button class="btn btn-primary btn-sm ml-2" @onclick="@AssignImageToConfiguration"><i class="fa-solid fa-car-side" /> Assign Image </button>
+                        </div>
+                    }
+                </center>
+            </div>
+        }
+    </div>
+</div>

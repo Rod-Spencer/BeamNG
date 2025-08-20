@@ -1,0 +1,61 @@
+﻿@page "/AddImage"
+
+@if (Saved == true)
+{
+    <div class="alert @StatusClass">
+        <div>
+            @if (Messages.Count > 0)
+            {
+                <center>Success</center>
+                @foreach (String msg in Messages)
+                {
+                    <center><p>@msg</p></center>
+                }
+            }
+
+            @if (ErrorMessages.Count > 0)
+            {
+                <center>Failed</center>
+                @foreach (String msg in ErrorMessages)
+                {
+                    <center><p>@msg</p></center>
+                }
+            }
+
+            @if ((Messages.Count > 0) || (ErrorMessages.Count > 0))
+            {
+                <center><button type="button" class="btn btn-primary btn-sm" onclick="@ClearMessages">Clear</button></center>
+            }
+        </div>
+    </div>
+}
+
+<section>
+    <h1 class="page-title  text-center">Adding a new Vehicle Image</h1>
+    <br />
+    <br />
+
+    @*     <EditForm Model="String" OnValidSubmit="ValidSumitHandler" OnInvalidSubmit="InvalidSubmitHandler">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    *@
+    <div class="form-group row mb-2 wide500">
+        <div class="wide20p">Name</div>
+        <div class="wide80p">
+            <InputFile class="form-control" OnChange="@UploadFile" multiple />
+            @* <ValidationMessage class="wide300" For="@(() => ImageFiles)" /> *@
+        </div>
+    </div>
+
+    @*         <div>
+    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa fa-floppy-o" /> Save</button>
+    </div>
+
+    </EditForm>
+    *@
+</section>
+<hr />
+
+<a href="@("ListImages")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

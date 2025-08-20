@@ -1,0 +1,136 @@
+﻿@page "/ViewConfiguration/{ID}"
+@using SpenSoft.DanBeamNG.Components
+
+@if (Vehicle != null)
+{
+    <h1 class="page-title text-center">Viewing Vehicle: @Vehicle.Name</h1>
+}
+@if (Configuration != null)
+{
+    <h3 class="page-title text-center">Configuration: @Configuration.Name</h3>
+}
+
+<div class="col-12 row">
+    <div class="col-10">
+        <div class="col-xs-12 col-sm-8">
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Vehicle ID</label>
+                <div class="col-sm-8">
+                    @if (Vehicle != null)
+                    {
+                        <label type="text" class="form-control-plaintext">@Vehicle.ID</label>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Configuration ID</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <label type="text" class="form-control-plaintext">@Configuration.ID</label>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Configuration Name</label>
+                <div class="col-sm-8">
+                    @if (Configuration != null)
+                    {
+                        <label type="text" class="form-control-plaintext">@Configuration.Name</label>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Classification</label>
+                <div class="col-sm-8">
+                    @if ((Configuration != null) && (Configuration.ClassificationID.HasValue == true))
+                    {
+                        @ClassificationsName(Configuration.ClassificationID)
+                        @* <label type="text" class="form-control-plaintext">@ClassificationsName(Configuration.ClassificationID)</label> *@
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Body Style</label>
+                <div class="col-sm-8">
+                    @if ((Configuration != null) && (Configuration.BodyStyleID.HasValue == true))
+                    {
+                        @BodyStyleName(Configuration.BodyStyleID)
+                        @* <label type="text" class="form-control-plaintext">@BodyStyleName(Configuration.BodyStyleID)</label> *@
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Country</label>
+                <div class="col-sm-8">
+                    @if ((Configuration != null) && (Configuration.CountryID.HasValue == true))
+                    {
+                        @CountriesName(Configuration.CountryID)
+                        @* <label type="text" class="form-control-plaintext">@CountriesName(Configuration.CountryID)</label> *@
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Drive Train</label>
+                <div class="col-sm-8">
+                    @if ((Configuration != null) && (Configuration.DriveTrainID.HasValue == true))
+                    {
+                        @DriveTrainName(Configuration.DriveTrainID)
+                        @* <label type="text" class="form-control-plaintext">@DriveTrainName(Configuration.DriveTrainID)</label> *@
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Image Name</label>
+                <div class="col-sm-8">
+                    @if (vehicleImage != null)
+                    {
+                        @vehicleImage.ImageName
+                        @* <label type="text" class="form-control-plaintext">@ImageName</label> *@
+                    }
+
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-4 col-form-label">Image</label>
+                <div class="col-sm-8">
+                    @if (vehicleImage != null)
+                    {
+                        <ImageVehicle image="@vehicleImage.ImageName" />
+                        @* <img src="data:image/bmp;base64, @(Convert.ToBase64String(vehicleImage.ImageData))" height="250" /> *@
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="m-b-sm">
+    @if (Configuration != null)
+    {
+        <a href="@($"EditConfiguration/{Configuration.ID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pencil" /> Edit</a>
+        <a href="@($"EditVehicle/{Configuration.VehicleID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to Vechicle</a>
+    }
+    <a href="@("ListVehicle")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to Vehicle List</a>
+    <a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+</div>
+<br />
+<div class="m-t-sm">
+    @*
+    <a href="@($"ViewConfiguration/{PrevConfigID}")" class="btn btn-primary btn-sm me-2" onclick="@GetPrevConfiguration()"><i class="fa-solid fa-arrow-circle-left" /> Previous Configuration </a>
+    <a href="@($"ViewConfiguration/{NextConfigID}")" class="btn btn-primary btn-sm" onclick="@GetNextConfiguration()"><i class="fa-solid fa-arrow-circle-right" /> Next Configuration </a>
+    *@
+    <a class="btn btn-primary btn-sm me-2" onclick="@GetPrevConfiguration"><i class="fa-solid fa-arrow-circle-left" /> Previous Configuration </a>
+    <a class="btn btn-primary btn-sm" onclick="@GetNextConfiguration"><i class="fa-solid fa-arrow-circle-right" /> Next Configuration </a>
+
+</div>

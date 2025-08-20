@@ -1,0 +1,8 @@
+﻿@if ((imageID != null) && (imageID != Guid.Empty))
+{
+    <img class="horiz-center image-img" src="@GetImage()" />
+}
+else
+{
+    <img class="horiz-center image-img" src="Empty.jpg" />
+}

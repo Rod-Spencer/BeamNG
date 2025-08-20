@@ -1,0 +1,98 @@
+﻿@* 
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">DanBeamNG</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+ *@
+<div id="nav-first-line" class="top-row ps-4 navbar navbar-dark">
+    <div class="container-fluid">
+        <img src="SpenSoft.ico" height="35" />
+        <a class="navbar-brand" href="">Dan's BeamNG Selector</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="BeamNG-container">
+        <img class="BeamNG-image" src="BeamNG.jpg" />
+    </div>
+</div>
+
+<div id="nav-menus" class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="fa fa-house" aria-hidden="true"></span><div class="ml-1"> Home</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RandomVehicle">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Random Vehicle</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RandomVehicleBody">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1"> Random by Body Style</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RandomVehicleClass">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Random by Class</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RandomVehicleCountry">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Random by Country</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RandomVehicleDrive">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Random by Drive Train</div>
+            </NavLink>
+        </div>
+        @* <AuthorizeView> *@
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ListVehicle">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Manage Vehicles</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ListImages">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Manage Images</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ListBody">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Manage Body Styles</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ListClass">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Manage Classifications</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ListCountries">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Manage Countries</div>
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ListDriveTrain">
+                <span class="fa fa-minus" aria-hidden="true"></span><div class="ml-1">Manage Drive Trains</div>
+            </NavLink>
+        </div>
+        @* </AuthorizeView> *@
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

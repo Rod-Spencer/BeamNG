@@ -1,0 +1,25 @@
+﻿@page "/ViewClass/{ID}"
+
+
+<h1 class="page-title  text-center">View a Classification</h1>
+<br />
+<br />
+
+@if (classification != null)
+{
+    <div class="form-group row mb-2">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-8">
+            @classification.Name
+        </div>
+    </div>
+    <br />
+}
+
+
+<hr />
+
+<a href="@($"EditClass/{ID}")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Edit </a>
+<a href="@("ListClass")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />

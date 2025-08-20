@@ -1,0 +1,48 @@
+﻿@page "/DeleteClass/{ID}"
+
+@if (Deleted == true)
+{
+    @if (classification != null)
+    {
+        <h3 class="page-title">Deleting Classification: @classification.Name</h3>
+    }
+}
+else
+{
+    <div class="alert @StatusClass">
+        @Message
+        @if ((inUseConfigs != null) && (inUseConfigs.Count > 0))
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="wide100" />
+                        <th class="wide300">Vehicle Name</th>
+                        <th class="wide200">Configuration Name</th>
+                        <th class="wide100" />
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var v in inUseConfigs)
+                    {
+                        <tr>
+                            <th />
+                            <th>@v.VehicleName</th>
+                            <th>@v.ConfigurationName</th>
+                            <th>
+                                <a href="@($"/EditConfiguration/{v.ConfigurationID}")" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-pencil" /> Edit this Configuration
+                                </a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+}
+
+<hr />
+<a href="@("ListClass")" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-rotate-left" /> Return to List</a>
+<a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-home"></i> Home</a>
+<br />
