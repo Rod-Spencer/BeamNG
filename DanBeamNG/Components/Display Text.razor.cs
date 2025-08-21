@@ -19,6 +19,10 @@ namespace SpenSoft.DanBeamNG.Components
         [Parameter]
         public String? DataWidth { get; set; } = "60%";
 
+        [Parameter]
+        public String? FontSize { get; set; } = "1rem";
+
+
         #endregion Parameters
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 

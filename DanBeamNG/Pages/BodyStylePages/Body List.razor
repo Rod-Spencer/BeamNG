@@ -32,8 +32,12 @@ else
                 </tr>
             </thead>
             <tbody>
-                <Virtualize Items="bodyStyleList" ItemSize="itemHeight" Context="v">
-                    <ItemContent>
+                @if ((bodyStyleList != null) && (bodyStyleList.Count > 0))
+                {
+                    foreach (var v in bodyStyleList)
+                    {
+                        @* < Virtualize Items = "bodyStyleList" ItemSize = "itemHeight" Context = "v" > *@
+                        @* <ItemContent> *@
                         <tr @key="v.ID">
                             <th></th>
                             <th>@v.ID</th>
@@ -50,8 +54,10 @@ else
                                 </a>
                             </th>
                         </tr>
-                    </ItemContent>
-                </Virtualize>
+                        @* </ItemContent> *@
+                        @* </Virtualize> *@
+                    }
+                }
             </tbody>
         </table>
     </div>

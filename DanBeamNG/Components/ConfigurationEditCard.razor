@@ -1,41 +1,45 @@
 ﻿<div class="col">
     <div class="card rounded-3 config-edit wide500 horiz-center">
         <div class="m-2">
-            <div class="d-flex align-content-center form-group mb-2">
+            <div class="d-flex align-content-center form-group mb-1">
                 <Display_Text Data="@config?.ID.ToString()" DataWidth="60%" Label="Configuration ID" LabelWidth="40%" />
             </div>
 
-            <div class="d-flex align-content-center form-group mb-2">
+            <div class="d-flex align-content-center form-group mb-1">
                 <Input_Text Label="Configuration Name" Data="@config?.Name" InputWidth="60%" LabelWidth="40%" Placeholder="Configuration Name" />
             </div>
 
-            <div class="d-flex align-content-center form-group mb-2">
+            <div class="d-flex align-content-center form-group mb-1">
                 <Input_Select Label="Classification" LabelWidth="40%" BindingProperty="@config?.ClassificationID" InputWidth="60%" ValueList="Classifications_List" />
             </div>
 
-            <div class="d-flex align-content-center form-group mb-2">
+            <div class="d-flex align-content-center form-group mb-1">
                 <Input_Select Label="Body Style" LabelWidth="40%" BindingProperty="@config?.BodyStyleID" InputWidth="60%" ValueList="BodyStyles_List" />
             </div>
 
-            <div class="d-flex align-content-center form-group mb-2">
+            <div class="d-flex align-content-center form-group mb-1">
                 <Input_Select Label="Country" LabelWidth="40%" BindingProperty="@config?.CountryID" InputWidth="60%" ValueList="@Countries_List" />
             </div>
 
-            <div class="d-flex align-content-center align-items-center form-group mb-2">
+            <div class="d-flex align-content-center form-group mb-1">
                 <Input_Select Label="Drive Train" LabelWidth="40%" BindingProperty="@config?.DriveTrainID" InputWidth="60%" ValueList="@DriveTrains_List" />
             </div>
 
             <div class="d-flex align-content-center form-group mb-2">
-                <div class="wide40p ml-1">Image Name</div>
-                <div class="wide60p">@ImageName</div>
+                <Display_Text Data="@ImageName" DataWidth="60%" Label="Image Name" LabelWidth="40%" />
+                @* <div class="wide40p ml-1">Image Name</div> *@
+                @* <div class="wide60p">@ImageName</div> *@
             </div>
 
             <div class="d-flex align-content-center form-group mb-2">
-                <div class="wide40p ml-1">Image ID</div>
-                <div class="wide60p small">@ImageID</div>
+                <Display_Text Data="@ImageID" DataWidth="60%" Label="Image ID" LabelWidth="40%" FontSize=".8rem"/>
+                @* <div class="wide40p ml-1">Image ID</div> *@
+                @* <div class="wide60p small">@ImageID</div> *@
             </div>
 
             <div class="d-flex align-content-center form-group mb-2">
+                <Input_File BindingProperty="@ImageName" InputWidth="60%" Label="Image Name" LabelWidth="40%" FileSelectedCallback="@ImageName_Delegate" />
+@* 
                 <div class="wide40p ml-1">Select Image</div>
                 <div class="wide60p">
                     @if (config != null)
@@ -44,6 +48,7 @@
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => ImageFile)" />
                     }
                 </div>
+ *@
             </div>
 
             <br />

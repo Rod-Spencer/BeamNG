@@ -7,9 +7,13 @@
         <h3 class="image-lookup-popup-header">Image Lookup</h3>
 
         <section class="image-list image-lookup-popup-select horiz-center">
-            <Virtualize Items="@images" Context="c">
-                <ImageThumb imageID="@c.ImageID" imageName="@c.ImageName" config="@_vConfiguration" imageCallBack="@imageAssignCallBack" />
-            </Virtualize>
+            @if ((images != null) && (images.Count > 0))
+            {
+                foreach (var c in images)
+                {
+                    <ImageThumb imageID="@c.ImageID" imageName="@c.ImageName" config="@_vConfiguration" imageCallBack="@imageAssignCallBack" />
+                }
+            }
         </section>
 
         <section class="td-center">
