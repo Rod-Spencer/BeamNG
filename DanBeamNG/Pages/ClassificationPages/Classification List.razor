@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using SpenSoft.DanBeamNG.Components
 @page "/ListClass"
 
 <h1 class="page-title text-center">List All Classifications</h1>
@@ -21,6 +22,18 @@ else
     <a href="@($"AddClass")" class="btn btn-success btn-sm"><i class="fa-solid fa-plus" /> Add Classification</a>
     <br />
     <br />
+
+    <div class="row">
+        @foreach (var v in classificationList)
+        {
+            @* <div class="col-12 col-sm-12 col-md-6 col-sm-6 col-lg-4 col-xl-4 col-sm-4"> *@
+            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                <RenderComponent><Classification_Card classification="@v" classification_Delegate="Delete_Classification_Handler" /></RenderComponent>
+            </div>
+        }
+    </div>
+
+@* 
     <div class="tableFixHead">
         <table class="table" style="width:100%">
             <thead>
@@ -55,5 +68,6 @@ else
             </tbody>
         </table>
     </div>
+ *@
 }
 <br />

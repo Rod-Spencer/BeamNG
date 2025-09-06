@@ -1,0 +1,18 @@
+﻿<div class="card rounded-3 image-card">
+    <div class="card-header py-3 image-card-title">
+        <h4 class="text-center">@classification?.Name</h4>
+    </div>
+    <div class="image-card-footer">
+        <center>
+            <a href="@($"ViewClass/{classification?.ID}")" class="btn btn-primary btn-sm" title="Inspect this vehicle">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="@($"EditClass/{classification?.ID}")" class="btn btn-primary btn-sm" title="Edit this vehicle">
+                <i class="fa-solid fa-pencil"></i>
+            </a>
+            <button type="button" onclick="@Delete_Classification_Handler" class="btn btn-danger btn-sm" title="Delete this vehicle">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </center>
+    </div>
+</div>
