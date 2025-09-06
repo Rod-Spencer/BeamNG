@@ -98,6 +98,33 @@ namespace SpenSoft.DanBeamNG.Pages.DriveTrainPages
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Public Methods
+
+        public async Task Delete_Drive_Train_Handler(DriveTrain? driveTrain)
+        {
+            if (driveTrain != null)
+            {
+                try
+                {
+                    if (driveTrainDataService != null)
+                    {
+                        await driveTrainDataService?.DeleteDriveTrain(driveTrain?.ID);
+                        var dtList = await driveTrainDataService.GetAllDriveTrain();
+                        if (dtList != null)
+                        {
+                            driveTrainList = dtList?.OrderBy(x => x.Name).ToList();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //logger.Error(Exception_Helper.FormatExceptionString(ex));
+                    StatusClass = "alert-danger"; Message1 = $"The following Exception error was thrown while trying to delete the selected drive train: {ex.Message}";
+                    Message2 = "Please see runtime log for more details";
+                    Error = true;
+                }
+            }
+        }
+
         #endregion
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 

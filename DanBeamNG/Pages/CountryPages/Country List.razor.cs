@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
-using SpenSoft.DanBeamNG.Services;
 using SpenSoft.BeamNG.VehicleObjects;
+using SpenSoft.DanBeamNG.Pages.ClassificationPages;
+using SpenSoft.DanBeamNG.Services;
 
 namespace SpenSoft.DanBeamNG.Pages.CountryPages
 {
@@ -98,6 +99,34 @@ namespace SpenSoft.DanBeamNG.Pages.CountryPages
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Public Methods
+
+        public async Task Delete_Country_Handler(Countries? cls)
+        {
+            if (cls == null) return;
+            Error = false;
+            try
+            {
+                if (CountriesDataService != null)
+                {
+                    await CountriesDataService.DeleteCountries(cls.ID);
+                    var clsList = CountriesDataService.GetAllCountries();
+                    if (clsList != null)
+                    {
+                        CountryList = clsList?.Result?.OrderBy(x => x.Name).ToList();
+                    }
+
+                }
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                //logger.Error(Exception_Helper.FormatExceptionString(ex));
+                StatusClass = "alert-danger"; Message1 = $"The following Exception error was thrown while trying to delete the country: {ex.Message}";
+                Message2 = "Please see runtime log for more details";
+                Error = true;
+            }
+        }
+
         #endregion
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 

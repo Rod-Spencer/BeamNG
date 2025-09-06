@@ -1,0 +1,18 @@
+﻿<div class="card rounded-3 image-card">
+    <div class="card-header py-3 image-card-title">
+        <h4 class="text-center">@Drive_Train?.Name</h4>
+    </div>
+    <div class="image-card-footer">
+        <center>
+            <a href="@($"ViewDriveTrain/{Drive_Train?.ID}")" class="btn btn-primary btn-sm" title="Inspect this Drive Train">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="@($"EditDriveTrain/{Drive_Train?.ID}")" class="btn btn-primary btn-sm" title="Edit this Drive Train">
+                <i class="fa-solid fa-pencil"></i>
+            </a>
+            <button type="button" onclick="@Delete_Drive_Train_Handler" class="btn btn-danger btn-sm" title="Delete this Drive Train">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </center>
+    </div>
+</div>
