@@ -1,16 +1,14 @@
-﻿<div class="col">
+﻿@*<div class="col">*@
     <div class="card rounded-3 image-card">
         <div class="card-header py-3 image-card-title">
-            <h4 class="text-center">@image?.ImageName</h4>
+            <h4 class="text-center">@bodyStyle?.Name</h4>
         </div>
-        <RenderComponent><ImageSmall imageID="@image?.ImageID" /></RenderComponent>
-        <div class="td-center image-card-id">@image?.ImageID</div>
         <div class="image-card-footer">
             <center>
-                <a href="@($"ViewImage/{image?.ImageID}")" class="btn btn-primary btn-sm" title="Inspect this vehicle">
+                <a href="@($"ViewBody/{bodyStyle?.ID}")" class="btn btn-primary btn-sm" title="Inspect this vehicle">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
-                <a href="@($"EditImage/{image?.ImageID}")" class="btn btn-primary btn-sm" title="Edit this vehicle">
+                <a href="@($"EditBody/{bodyStyle?.ID}")" class="btn btn-primary btn-sm" title="Edit this vehicle">
                     <i class="fa-solid fa-pencil"></i>
                 </a>
                 <button type="button" onclick="@DeleteImage" class="btn btn-danger btn-sm" title="Delete this vehicle">
@@ -19,4 +17,4 @@
             </center>
         </div>
     </div>
-</div>
+@*</div>*@

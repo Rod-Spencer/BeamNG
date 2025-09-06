@@ -98,6 +98,21 @@ namespace SpenSoft.DanBeamNG.Pages.BodyStylePages
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Public Methods
+
+        public async Task Delete_Body_Handler(BodyStyles bodyStyle)
+        {
+            if (bodyStyleDataService != null)
+            {
+                await bodyStyleDataService.DeleteBodyStyle(bodyStyle.ID);
+                //bodyStyleList?.Remove(bodyStyle);
+                var bsList = bodyStyleDataService.GetAllBodyStyle();
+                if ( bsList!= null)
+                bodyStyleList = bsList?.Result?.OrderBy(x => x.Name).ToList();
+            }
+            await Task.CompletedTask;
+        }
+
+
         #endregion
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 

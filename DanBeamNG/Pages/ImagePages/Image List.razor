@@ -59,11 +59,9 @@ else
         {
             foreach (var i in ImageList)
             {
-                @* <Virtualize Items="ImageList" Context="c"> *@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                         <ImageCard image="@i" Delete_Delegate="@Delete_Handler" />
                     </div>
-                @* </Virtualize> *@
             }
         }
     </div>

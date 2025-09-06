@@ -1,5 +1,6 @@
 ﻿@page "/ListBody"
 @using Microsoft.AspNetCore.Components.Web.Virtualization
+@using SpenSoft.DanBeamNG.Components
 
 <h1 class="page-title text-center">List All Body Styles</h1>
 <br />
@@ -21,6 +22,16 @@ else
     <a href="@($"AddBody")" class="btn btn-success btn-sm"><i class="fa-solid fa-plus" /> Add Body Style</a>
     <br />
     <br />
+    <div class="row">
+        @foreach (var v in bodyStyleList)
+        {
+            @* <div class="col-12 col-sm-12 col-md-6 col-sm-6 col-lg-4 col-xl-4 col-sm-4"> *@
+            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                <RenderComponent><BodyCard bodyStyle="@v" bodyStyle_Delegate="Delete_Body_Handler" /></RenderComponent>
+            </div>
+        }
+    </div>
+    @* 
     <div class="tableFixHead">
         <table class="table" style="width:100%">
             <thead>
@@ -36,8 +47,6 @@ else
                 {
                     foreach (var v in bodyStyleList)
                     {
-                        @* < Virtualize Items = "bodyStyleList" ItemSize = "itemHeight" Context = "v" > *@
-                        @* <ItemContent> *@
                         <tr @key="v.ID">
                             <th></th>
                             <th>@v.ID</th>
@@ -54,12 +63,11 @@ else
                                 </a>
                             </th>
                         </tr>
-                        @* </ItemContent> *@
-                        @* </Virtualize> *@
                     }
                 }
             </tbody>
         </table>
     </div>
+ *@
 }
 <br />

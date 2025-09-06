@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using SpenSoft.BeamNG.VehicleObjects;
 
 namespace SpenSoft.DanBeamNG.Components
 {
@@ -12,6 +13,13 @@ namespace SpenSoft.DanBeamNG.Components
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Parameters
+
+        [Parameter]
+        public BodyStyles? bodyStyle { get; set; }
+
+        [Parameter]
+        public EventCallback<BodyStyles> bodyStyle_Delegate { get; set; }
+
         #endregion Parameters
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,6 +56,10 @@ namespace SpenSoft.DanBeamNG.Components
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Public Methods
+
+        public async Task DeleteImage() => await bodyStyle_Delegate.InvokeAsync(bodyStyle);
+
+
         #endregion
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
