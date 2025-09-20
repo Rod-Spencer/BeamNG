@@ -81,6 +81,25 @@ namespace SpenSoft.DanBeamNG.Pages.VehiclePages
             }
         }
 
+        public List<KeyValuePair<Guid, String?>> Countries
+        {
+            get
+            {
+                var list = new List<KeyValuePair<Guid, String?>>();
+                list.Add(new KeyValuePair<Guid, String?>(Guid.Empty, null));
+                if (Country_List != null)
+                {
+                    foreach (var cntry in Country_List)
+                    {
+                        list.Add(new KeyValuePair<Guid, String?>(cntry.ID, cntry.Name));
+
+                    }
+                }
+                return list;
+            }
+        }
+
+
         public int ConfigurationCount { get; set; } = 0;
 
 

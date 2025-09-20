@@ -4,9 +4,11 @@ using SpenSoft.EF.BeamNG;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor()
+    .AddCircuitOptions(o => { o.DetailedErrors = true; });
 
 
 builder.Services.Configure<CircuitOptions>(options => { options.DetailedErrors = true; });
@@ -22,6 +24,14 @@ builder.Services.AddScoped<VehicleImageDataService_Interface, VehicleImageDataSe
 builder.Services.AddSingleton<BeamNGContext>();
 builder.Services.AddScoped<Browser_Service>();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(44450, listenOptions =>
+    {
+        listenOptions.UseHttps(); // Uses default dev certificate
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,11 +40,12 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
 }
 
+app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseWebSockets();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

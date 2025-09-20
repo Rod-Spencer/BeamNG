@@ -66,6 +66,23 @@ namespace SpenSoft.DanBeamNG.Pages.VehiclePages
 
         public List<DriveTrain>? DriveTrain_List { get; set; }
 
+        public List<KeyValuePair<Guid, String?>> Bodies
+        {
+            get
+            {
+                var list = new List<KeyValuePair<Guid, String?>>();
+                list.Add(new KeyValuePair<Guid, String?>(Guid.Empty, null));
+                if (BodyStyles_List != null)
+                {
+                    foreach (var body in BodyStyles_List)
+                    {
+                        list.Add(new KeyValuePair<Guid, String?>(body.ID, body.Name));
+
+                    }
+                }
+                return list;
+            }
+        }
 
         private Guid? _SelectedBody = null;
         public Guid? SelectedBody

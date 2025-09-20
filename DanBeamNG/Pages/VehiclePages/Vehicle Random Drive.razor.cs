@@ -82,6 +82,25 @@ namespace SpenSoft.DanBeamNG.Pages.VehiclePages
             }
         }
 
+        public List<KeyValuePair<Guid, String?>> DriveTrains
+        {
+            get
+            {
+                var list = new List<KeyValuePair<Guid, String?>>();
+                list.Add(new KeyValuePair<Guid, String?>(Guid.Empty, null));
+                if (DriveTrain_List != null)
+                {
+                    foreach (var dt in DriveTrain_List)
+                    {
+                        list.Add(new KeyValuePair<Guid, String?>(dt.ID, dt.Name));
+
+                    }
+                }
+                return list;
+            }
+        }
+
+
         public Vehicle? Vehicle { get; set; }
 
         public Configuration_Info? CI { get; set; } = null;

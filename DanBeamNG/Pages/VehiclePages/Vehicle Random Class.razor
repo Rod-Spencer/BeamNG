@@ -11,22 +11,9 @@
 
     <div class="random-card-select py-1">
         <div class="row">
-            <div class="wide40p">Select Classification</div>
-            <div class="wide60p">
-                <InputSelect id="activity-classSelect" class="wide100p"
-                             ValueChanged="@((Guid? x) => WhenValueChanges(x))"
-                             ValueExpression="@(() => SelectedClass)"
-                             Value="@SelectedClass">
-                    <option value="@Guid.Empty"></option>
-                    @if ((Classifications_List != null) && (Classifications_List.Count > 0))
-                    {
-                        foreach (var c in Classifications_List)
-                        {
-                            <option value="@c.ID">@c.Name</option>
-                        }
-                    }
-                </InputSelect>
-            </div>
+            <Input_Select InputWidth="50%" LabelWidth="50%" ValueList="Classifications"
+                          Label="Body Style" Placeholder="Select Body Style"
+                          BindingProperty="SelectedClass" StatusCodeCallback="WhenValueChanges" />
         </div>
         <div>
             @if (ConfigurationCount > 0)
@@ -40,7 +27,7 @@
 
     @if ((SelectedClass != null) && (SelectedClass != Guid.Empty))
     {
-        <div class="wide400">
+        <div class="wide400 mt-3">
             <RenderComponent>
                 <RandomClassCard VehicleName="@VehicleName" ConfigurationName="@ConfigurationName" BodyStyleName="@BodyStyleName"
                                  ClassificationName="@ClassificationName" CountryName="@CountryName" DriveTrainName="@DriveTrainName"

@@ -95,6 +95,25 @@ namespace SpenSoft.DanBeamNG.Pages.VehiclePages
         public String? ConfigurationName { get; set; }
         public Guid? ConfigurationImageID { get; set; }
 
+        public List<KeyValuePair<Guid, String?>> Classifications
+        {
+            get
+            {
+                var list = new List<KeyValuePair<Guid, String?>>();
+                list.Add(new KeyValuePair<Guid, String?>(Guid.Empty, null));
+                if (Classifications_List != null)
+                {
+                    foreach (var cls in Classifications_List)
+                    {
+                        list.Add(new KeyValuePair<Guid, String?>(cls.ID, cls.Name));
+
+                    }
+                }
+                return list;
+            }
+        }
+
+
         #endregion Public Properties
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
